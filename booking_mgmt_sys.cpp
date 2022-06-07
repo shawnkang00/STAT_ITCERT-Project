@@ -2,11 +2,13 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+#include <algorithm>
 #include <list>
 using namespace std;
 
 struct Booking {
     string day, start_time, end_time, name, people, table;
+   
 };
  
 list<Booking>schedule;
@@ -18,6 +20,7 @@ void file_to_list(list<Booking>& schedule) {
 
     if (ifile.fail()) {
         cout << "Input file cannot be opened" << endl;
+        exit(1);
     }
     string line;
     while (getline(ifile, line)) {
@@ -61,6 +64,27 @@ void file_to_list(list<Booking>& schedule) {
         schedule.push_back(b);
     }
     ifile.close();
+}
+
+//store data from list to input.txt
+void list_to_file(list<Booking> schedule) {
+
+    ofstream ofile("input.txt");
+
+    if (ofile.fail()) {
+        cout << "input.txt cannot be opened" << endl;
+        exit(1);
+    }
+
+    for (list<Booking>::iterator iter = schedule.begin(); iter != schedule.end(); iter++) {
+
+        ofile << iter->day << " " << iter->start_time << " " << iter->end_time << " " << iter->name << " " << iter->people << " " << iter->table << endl;
+
+    }
+
+    cout << "Saved data to input.txt" << endl;
+
+    ofile.close();
 }
 
 //list out all bookings on a given day
@@ -119,13 +143,122 @@ void TotalBooking(list<Booking>schedule) {
 
 }
 
+//adds a booking to the schedule
+void Add_Booking(list<Booking>& schedule) {
+
+    string dy, s_time, e_time, n, ppl, tableNo;
+    bool clash = false;
+    cout << "Day of the week:" << endl;
+    cin >> dy;
+    cout << "Start time: " << endl;
+    cin >> s_time;
+    cout << "End time: " << endl;
+    cin >> e_time;
+    cout << "Name: " << endl;
+    cin >> n;
+    cout << "Number of people: " << endl;
+    cin >> ppl;
+    if (stoi(ppl) > 4) {
+        cout << "Maximum occupancy for each table is 4." << endl;
+        return;
+    }
+    cout << "Table Number: " << endl;
+    cin >> tableNo;
+    if (tableNo <= "00" || tableNo >= "25") {
+        cout << "Table Number out of range" << endl;
+        return;
+    }
+
+    for (list<Booking>::iterator iter = schedule.begin(); (iter != schedule.end() && clash != true); iter++) {
+
+        if (dy == iter->day) {
+            if ((s_time >= iter->start_time && s_time <= iter->start_time)||(e_time >= iter->start_time && e_time <= iter->start_time)) {
+                if (tableNo == iter->table) {
+                    clash = true;
+                }
+            }
+        }
+    }
+
+    if (clash) {
+        cout << "Booking cannot be made due to reservation clashes" << endl;
+        return;
+    }
+    else {
+        Booking b1 = { dy, s_time, e_time, n, ppl, tableNo };
+        schedule.push_back(b1);
+        cout << "Booking added to schedule" << endl;
+    }
+    
+
+}
+
+//print help menu for main function
+void h_cmd() {
+
+    system("cls");
+    cout << "==========================================================\n";
+    cout << setw(20) << "" << setw(15) << "List of Commands" << setw(20) << "" << endl;
+    cout << "==========================================================\n";
+    cout << setw(13) << left << "save" << setw(40) << left << "| Save current schedule to file" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "listBooking" << setw(40) << left << "| List all current schedule booking" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "totBooking" << setw(40) << left << "| View all booking for a day" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "addBooking" << setw(40) << left << "| Add a booking" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "rmBooking" << setw(40) << left << "| Remove a booking" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "chkTime" << setw(40) << left << "| Check the avaliability of a table" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "exit" << setw(40) << left << "| Exit program" << endl;
+    cout << "----------------------------------------------------------\n";
+    system("pause");
+    system("cls");
+
+}
+
 int main() {
 
-	file_to_list(schedule);
-    
-    ListBooking(schedule);
+    string cmd;
+    file_to_list(schedule);
 
-    TotalBooking(schedule);
+    while (true) {
+        cout << "Command: (h for help)" << endl;
+        cin >> cmd;
+        
+        if (cmd == "h") {
+            h_cmd();
+        }
+        else if (cmd == "save") {
+            list_to_file(schedule);
+        }
+        else if (cmd == "listBooking") {
+            ListBooking(schedule);
+        }
+        else if (cmd == "totBooking") {
+            TotalBooking(schedule);
+        }
+        else if (cmd == "addBooking") {
+            Add_Booking(schedule);
+        }
+        else if (cmd == "rmBooking") {
 
+        }
+        else if (cmd == "chkTime") {
+
+        }
+        else if (cmd == "exit") {
+            system("cls");
+            break;
+        }
+        else {
+            cout << "Invalid command" << endl;
+        }
+    }
+
+    cout << "Program exited" << endl;
+	
 	return 0;
 }
