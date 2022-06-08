@@ -193,6 +193,45 @@ void Add_Booking(list<Booking>& schedule) {
 
 }
 
+//remove a booking from the schedule
+void Rm_Booking(list<Booking>& schedule) {
+
+    string dy, s_time, e_time, n, tableNo;
+    bool exist = false;
+    cout << "Day of reservation: " << endl;
+    cin >> dy;
+    cout << "Start time of reservation: " << endl;
+    cin >> s_time;
+    cout << "End time of reservation: " << endl;
+    cin >> e_time;
+    cout << "Name of reservation: " << endl;
+    cin >> n;
+    cout << "Table number reserved: " << endl;
+    cin >> tableNo;
+
+    list<Booking>::iterator iter = schedule.begin();
+    for (; iter != schedule.end(); iter++) {
+        if (iter->day == dy) {
+            if (iter->start_time == s_time) {
+                if (iter->end_time == e_time) {
+                    if (iter->name == n) {
+                        if (iter->table == tableNo) {
+                            exist = true;
+                            schedule.erase(iter);
+                            cout << "Booking removed from schedule" << endl;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    cout << "Booking not found" << endl;
+    return;
+
+}
+
 //print help menu for main function
 void h_cmd() {
 
@@ -216,6 +255,37 @@ void h_cmd() {
     cout << "----------------------------------------------------------\n";
     system("pause");
     system("cls");
+
+}
+
+//check avaliability of table
+//returns time period in which the table is occupied
+void CheckTime(list<Booking>schedule) {
+
+    string dy, tableNo;
+    bool exist = false;
+    cout << "Day of reservation: " << endl;
+    cin >> dy;
+    cout << "Table number reserved: " << endl;
+    cin >> tableNo;
+
+    list<Booking>::iterator iter = schedule.begin();
+    for (; iter != schedule.end(); iter++) {
+        if (iter->day == dy) {
+            if (iter->table == tableNo) {
+                exist = true;
+                cout << "------------------------------------------\n";
+                cout << iter->start_time << "~" << iter->end_time << endl;
+            }
+        }
+    }
+
+    if (!exist) {
+        cout << "Table " << tableNo << " does not have any reservations on record on " << dy << endl;
+        return;
+    }
+    cout << "------------------------------------------\n";
+
 
 }
 
@@ -244,10 +314,10 @@ int main() {
             Add_Booking(schedule);
         }
         else if (cmd == "rmBooking") {
-
+            Rm_Booking(schedule);
         }
         else if (cmd == "chkTime") {
-
+            CheckTime(schedule);
         }
         else if (cmd == "exit") {
             system("cls");
