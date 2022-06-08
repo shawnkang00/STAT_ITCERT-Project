@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
-#include <algorithm>
 #include <list>
 using namespace std;
 
