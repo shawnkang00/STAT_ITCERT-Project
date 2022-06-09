@@ -254,15 +254,15 @@ void h_cmd() {
     cout << "==========================================================\n";
     cout << setw(13) << left << "save" << setw(40) << left << "| Save current schedule to file" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "listBooking" << setw(40) << left << "| List all current schedule booking" << endl;
+    cout << setw(13) << left << "list" << setw(40) << left << "| List all current schedule booking" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "totBooking" << setw(40) << left << "| View all booking for a day" << endl;
+    cout << setw(13) << left << "total" << setw(40) << left << "| View all booking for a day" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "addBooking" << setw(40) << left << "| Add a booking" << endl;
+    cout << setw(13) << left << "add" << setw(40) << left << "| Add a booking" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "rmBooking" << setw(40) << left << "| Remove a booking" << endl;
+    cout << setw(13) << left << "remove" << setw(40) << left << "| Remove a booking" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "chkTime" << setw(40) << left << "| Check the avaliability of a table" << endl;
+    cout << setw(13) << left << "check" << setw(40) << left << "| Check the avaliability of a table" << endl;
     cout << "----------------------------------------------------------\n";
     cout << setw(13) << left << "exit" << setw(40) << left << "| Exit program" << endl;
     cout << "----------------------------------------------------------\n";
@@ -317,19 +317,19 @@ int main() {
         else if (cmd == "save") {
             list_to_file(schedule);
         }
-        else if (cmd == "listBooking") {
+        else if (cmd == "list") {
             ListBooking(schedule);
         }
-        else if (cmd == "totBooking") {
+        else if (cmd == "total") {
             TotalBooking(schedule);
         }
-        else if (cmd == "addBooking") {
+        else if (cmd == "add") {
             Add_Booking(schedule);
         }
-        else if (cmd == "rmBooking") {
+        else if (cmd == "remove") {
             Rm_Booking(schedule);
         }
-        else if (cmd == "chkTime") {
+        else if (cmd == "check") {
             CheckTime(schedule);
         }
         else if (cmd == "exit") {
