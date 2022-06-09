@@ -17,7 +17,7 @@ bool operator<(const Booking &b1, const Booking &b2) {
 list<Booking> schedule;
 
 //copy data from input.txt into list
-void file_to_list(list<Booking>& schedule) {
+void file_to_list(list<Booking> &schedule) {
 
     ifstream ifile("input.txt");
 
@@ -91,7 +91,7 @@ void list_to_file(list<Booking> schedule) {
 }
 
 //list out all bookings on a given day
-void ListBooking(list<Booking>schedule) {
+void ListBooking(list<Booking> schedule) {
 
     string d;
 retry:
@@ -134,7 +134,7 @@ retry:
 }
 
 //prints the total number of bookings in a week
-void TotalBooking(list<Booking>schedule) {
+void TotalBooking(list<Booking> schedule) {
     
     int count = schedule.size();
     if (count == 0) {
@@ -147,7 +147,7 @@ void TotalBooking(list<Booking>schedule) {
 }
 
 // Make a new booking to the schedule
-void AddBooking(list<Booking>& schedule) {
+void AddBooking(list<Booking> &schedule) {
 
     string day, s_time, e_time, n, ppl, tableNo;
     bool clash = false;
@@ -205,7 +205,7 @@ void AddBooking(list<Booking>& schedule) {
 }
 
 //remove a booking from the schedule
-void Rm_Booking(list<Booking>& schedule) {
+void Rm_Booking(list<Booking> &schedule) {
 
     string dy, s_time, e_time, n, tableNo;
     bool exist = false;
@@ -243,35 +243,9 @@ void Rm_Booking(list<Booking>& schedule) {
 
 }
 
-// print help menu for main function
-void h_cmd() {
-
-    system("cls");
-    cout << "==========================================================\n";
-    cout << setw(20) << "" << setw(15) << "List of Commands" << setw(20) << "" << endl;
-    cout << "==========================================================\n";
-    cout << setw(13) << left << "save" << setw(40) << left << "| Save current schedule to file" << endl;
-    cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "list" << setw(40) << left << "| List all current schedule booking" << endl;
-    cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "total" << setw(40) << left << "| View all booking for a day" << endl;
-    cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "add" << setw(40) << left << "| Add a booking" << endl;
-    cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "remove" << setw(40) << left << "| Remove a booking" << endl;
-    cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "check" << setw(40) << left << "| Check the avaliability of a table" << endl;
-    cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "exit" << setw(40) << left << "| Exit program" << endl;
-    cout << "----------------------------------------------------------\n";
-    system("pause");
-    system("cls");
-
-}
-
 //check avaliability of table
 //returns time period in which the table is occupied
-void CheckTime(list<Booking>schedule) {
+void CheckTime(list<Booking> schedule) {
 
     string dy, tableNo;
     bool exist = false;
@@ -297,6 +271,32 @@ void CheckTime(list<Booking>schedule) {
     }
     cout << "------------------------------------------\n";
 
+
+}
+
+// print help menu for main function
+void h_cmd() {
+
+    system("cls");
+    cout << "==========================================================\n";
+    cout << setw(20) << "" << setw(15) << "List of Commands" << setw(20) << "" << endl;
+    cout << "==========================================================\n";
+    cout << setw(13) << left << "save" << setw(40) << left << "| Save current schedule to file" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "list" << setw(40) << left << "| List all current schedule booking" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "total" << setw(40) << left << "| View all booking for a day" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "add" << setw(40) << left << "| Add a booking" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "remove" << setw(40) << left << "| Remove a booking" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "check" << setw(40) << left << "| Check the avaliability of a table" << endl;
+    cout << "----------------------------------------------------------\n";
+    cout << setw(13) << left << "exit" << setw(40) << left << "| Exit program" << endl;
+    cout << "----------------------------------------------------------\n";
+    system("pause");
+    system("cls");
 
 }
 
