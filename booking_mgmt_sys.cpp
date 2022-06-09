@@ -3,12 +3,18 @@
 #include <string>
 #include <iomanip>
 #include <list>
+#include <algorithm>
 using namespace std;
 
 struct Booking {
-    string day, start_time, end_time, name, people, table;
-   
+    string day, start_time, end_time, name, people, table;   
 };
+
+bool operator<(const Booking &b1, const Booking &b2) {
+ 
+    return (b1.name < b2.name);
+    
+}
  
 list<Booking>schedule;
 
@@ -110,7 +116,7 @@ retry:
                 counter++;
             }
         }
-
+        schedule.sort();
         //list out all bookings on d
         iter = schedule.begin();
         cout << "There are " << counter << " reservation(s) on " << d <<":"<< endl;
@@ -151,8 +157,16 @@ void Add_Booking(list<Booking>& schedule) {
     cin >> dy;
     cout << "Start time: " << endl;
     cin >> s_time;
+    if (s_time >= "2100") {
+        cout << "Start time passed restaurant business hours" << endl;
+        return;
+    }
     cout << "End time: " << endl;
     cin >> e_time;
+    if (e_time >= "2100") {
+        cout << "End time passed restaurant business hours" << endl;
+        return;
+    }
     cout << "Name: " << endl;
     cin >> n;
     cout << "Number of people: " << endl;
