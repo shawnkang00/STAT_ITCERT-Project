@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <list>
 #include <algorithm>
+
 using namespace std;
 
 struct Booking {
@@ -182,7 +183,7 @@ void AddBooking(list<Booking> &schedule) {
 
     for (list<Booking>::iterator iter = schedule.begin(); (iter != schedule.end() && clash != true); iter++) {
 
-        if (dy == iter->day) {
+        if (day == iter->day) {
             if ((s_time >= iter->start_time && s_time <= iter->start_time)||(e_time >= iter->start_time && e_time <= iter->start_time)) {
                 if (tableNo == iter->table) {
                     clash = true;
@@ -196,7 +197,7 @@ void AddBooking(list<Booking> &schedule) {
         return;
     }
     else {
-        Booking b1 = { dy, s_time, e_time, n, ppl, tableNo };
+        Booking b1 = { day, s_time, e_time, n, ppl, tableNo };
         schedule.push_back(b1);
         cout << "Booking added to schedule" << endl;
     }
