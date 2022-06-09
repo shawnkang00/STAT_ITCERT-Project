@@ -11,12 +11,10 @@ struct Booking {
 };
 
 bool operator<(const Booking &b1, const Booking &b2) {
- 
     return (b1.name < b2.name);
-    
 }
  
-list<Booking>schedule;
+list<Booking> schedule;
 
 //copy data from input.txt into list
 void file_to_list(list<Booking>& schedule) {
@@ -148,13 +146,13 @@ void TotalBooking(list<Booking>schedule) {
 
 }
 
-//adds a booking to the schedule
-void Add_Booking(list<Booking>& schedule) {
+// Make a new booking to the schedule
+void AddBooking(list<Booking>& schedule) {
 
-    string dy, s_time, e_time, n, ppl, tableNo;
+    string day, s_time, e_time, n, ppl, tableNo;
     bool clash = false;
     cout << "Day of the week:" << endl;
-    cin >> dy;
+    cin >> day;
     cout << "Start time: " << endl;
     cin >> s_time;
     if (s_time >= "2100") {
@@ -245,7 +243,7 @@ void Rm_Booking(list<Booking>& schedule) {
 
 }
 
-//print help menu for main function
+// print help menu for main function
 void h_cmd() {
 
     system("cls");
@@ -324,7 +322,7 @@ int main() {
             TotalBooking(schedule);
         }
         else if (cmd == "add") {
-            Add_Booking(schedule);
+            AddBooking(schedule);
         }
         else if (cmd == "remove") {
             Rm_Booking(schedule);
@@ -337,11 +335,11 @@ int main() {
             break;
         }
         else {
-            cout << "Invalid command" << endl;
+            cout << "Invalid Command" << endl;
         }
     }
 
-    cout << "Program exited" << endl;
+    cout << "Program Exited" << endl;
 	
 	return 0;
 }
