@@ -247,7 +247,6 @@ void Rm_Booking(list<Booking> &schedule) {
 //check avaliability of table
 //returns time period in which the table is occupied
 void CheckTime(list<Booking> schedule) {
-
     string dy, tableNo;
     bool exist = false;
     cout << "Day of reservation: " << endl;
@@ -271,8 +270,6 @@ void CheckTime(list<Booking> schedule) {
         return;
     }
     cout << "------------------------------------------\n";
-
-
 }
 
 // print help menu for main function
