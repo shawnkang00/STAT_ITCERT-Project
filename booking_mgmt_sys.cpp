@@ -11,10 +11,8 @@ struct Booking {
 };
 
 bool operator<(const Booking &b1, const Booking &b2) {
- 
-    return (b1.name < b2.name);
-    
-}
+     return (b1.name < b2.name);
+ }
  
 list<Booking>schedule;
 
@@ -308,15 +306,15 @@ void h_cmd() {
     cout << "==========================================================\n";
     cout << setw(13) << left << "save" << setw(40) << left << "| Save current schedule to file" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "listBooking" << setw(40) << left << "| List all current schedule booking" << endl;
+    cout << setw(13) << left << "list" << setw(40) << left << "| List all current schedule booking" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "totBooking" << setw(40) << left << "| View all booking for a day" << endl;
+    cout << setw(13) << left << "total" << setw(40) << left << "| View all booking for a day" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "addBooking" << setw(40) << left << "| Add a booking" << endl;
+    cout << setw(13) << left << "add" << setw(40) << left << "| Add a booking" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "rmBooking" << setw(40) << left << "| Remove a booking" << endl;
+    cout << setw(13) << left << "remove" << setw(40) << left << "| Remove a booking" << endl;
     cout << "----------------------------------------------------------\n";
-    cout << setw(13) << left << "chkTime" << setw(40) << left << "| Check the avaliability of a table" << endl;
+    cout << setw(13) << left << "check" << setw(40) << left << "| Check the avaliability of a table" << endl;
     cout << "----------------------------------------------------------\n";
     cout << setw(13) << left << "exit" << setw(40) << left << "| Exit program" << endl;
     cout << "----------------------------------------------------------\n";
