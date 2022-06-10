@@ -395,19 +395,19 @@ int main() {
         else if (cmd == "save") {
             list_to_file(schedule);
         }
-        else if (cmd == "listBooking") {
+        else if (cmd == "list") {
             ListBooking(schedule);
         }
-        else if (cmd == "totBooking") {
+        else if (cmd == "total") {
             TotalBooking(schedule);
         }
-        else if (cmd == "addBooking") {
+        else if (cmd == "add") {
             Add_Booking(schedule);
         }
-        else if (cmd == "rmBooking") {
+        else if (cmd == "remove") {
             Rm_Booking(schedule);
         }
-        else if (cmd == "chkTime") {
+        else if (cmd == "check") {
             CheckTime(schedule);
         }
         else if (cmd == "exit") {
