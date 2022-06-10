@@ -3,3 +3,14 @@ Tue 1030 1200 Peter 4 12
 Wed 1100 1300 Sam 1 13
 Wed 1100 1300 Sandy 2 14
 Wed 1130 1430 Marry 2 03
+Wed 1100 1300 Andy 1 10
+Wed 1100 1300 Sandy 2 08
+Wed 1130 1430 Marry 2 21
+Wed 1500 1700 Marry 2 03
+Wed 1100 1300 Charlie 1 04
+Wed 1100 1300 Sandy 2 11
+Wed 1130 1430 Marry 2 04
+Wed 1100 1300 Sam 1 11
+Wed 1100 1300 Sandy 2 09
+Wed 1130 1430 Marry 2 22
+Fri 1000 1200 Jack 1 21
